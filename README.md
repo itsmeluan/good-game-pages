@@ -13,6 +13,6 @@ Para publicar em GitHub Pages:
 
 Contato temporario configurado:
 
-- `m.luan.mobile@gmail.com`
+- `goodgamehelpme@gmail.com`
 
 Se quiser trocar o contato depois, basta buscar esse e-mail nos arquivos HTML.

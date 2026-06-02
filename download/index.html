@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Baixar o app | Good Game</title>
+    <meta
+      name="description"
+      content="Página de redirecionamento do Good Game para App Store ou Play Store."
+    />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="topbar">
+        <a class="brand" href="../">
+          <span class="brand-mark">GOOD<br />GAME</span>
+          <span class="brand-copy">
+            <span class="brand-title">Good Game</span>
+            <span class="brand-subtitle">Download do aplicativo</span>
+          </span>
+        </a>
+        <nav class="nav">
+          <a href="../support/">Suporte</a>
+          <a href="../privacy/">Privacidade</a>
+          <a href="../safety/">Segurança</a>
+        </nav>
+      </header>
+
+      <section class="hero">
+        <div class="eyebrow">Download</div>
+        <h1>Redirecionando para a loja certa</h1>
+        <p class="lead" id="redirect-message">
+          Estamos identificando se este aparelho usa iPhone ou Android para abrir a loja
+          correta automaticamente.
+        </p>
+        <div class="hero-actions">
+          <a class="button-link primary" id="primary-store-link" href="#"
+            >Abrir loja</a
+          >
+          <a
+            class="button-link"
+            href="https://apps.apple.com/ar/app/good-game-sua-próxima-partida/id6762091351"
+            >App Store</a
+          >
+          <a
+            class="button-link"
+            href="https://play.google.com/store/apps/details?id=com.martinsluan.goodgame"
+            >Play Store</a
+          >
+        </div>
+      </section>
+
+      <article class="panel prose">
+        <h2>Se o redirecionamento não acontecer</h2>
+        <p>
+          Toque em um dos botões acima. Em computadores ou navegadores que escondem o tipo
+          do aparelho, esta página mostra as duas opções manualmente.
+        </p>
+      </article>
+
+      <footer class="footer">
+        Good Game • Página de instalação
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        var appStoreUrl =
+          "https://apps.apple.com/ar/app/good-game-sua-próxima-partida/id6762091351";
+        var playStoreUrl =
+          "https://play.google.com/store/apps/details?id=com.martinsluan.goodgame";
+
+        var message = document.getElementById("redirect-message");
+        var primaryLink = document.getElementById("primary-store-link");
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera || "";
+
+        var isAndroid = /Android/i.test(userAgent);
+        var isIOS = /iPhone|iPad|iPod/i.test(userAgent);
+        var targetUrl = "";
+
+        if (isIOS) {
+          targetUrl = appStoreUrl;
+          message.textContent =
+            "iPhone identificado. Você será levado para a App Store em instantes.";
+          primaryLink.href = appStoreUrl;
+          primaryLink.textContent = "Abrir na App Store";
+        } else if (isAndroid) {
+          targetUrl = playStoreUrl;
+          message.textContent =
+            "Android identificado. Você será levado para a Play Store em instantes.";
+          primaryLink.href = playStoreUrl;
+          primaryLink.textContent = "Abrir na Play Store";
+        } else {
+          primaryLink.href = playStoreUrl;
+          primaryLink.textContent = "Abrir na Play Store";
+          message.textContent =
+            "Não foi possível identificar o aparelho com segurança. Escolha a loja manualmente abaixo.";
+        }
+
+        if (targetUrl) {
+          window.setTimeout(function () {
+            window.location.replace(targetUrl);
+          }, 700);
+        }
+      })();
+    </script>
+  </body>
+</html>
